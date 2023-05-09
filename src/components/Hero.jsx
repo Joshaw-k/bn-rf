@@ -4,11 +4,11 @@ import {BsFillArrowDownCircleFill} from "react-icons/bs"
 
 const Hero = () => {
   return (
-      <div className='container mx-auto p-8 my-10 min-h-[100vh]'>
+      <div className='container mx-auto p-8 mt-10 min-h-[100vh]'>
         <div className='sm:w-full mx-auto mb-5'>
           <img src={BlocknodeRectification} alt="hero.png" className='w-full' />
         </div>
-      <div className='w-95 m-auto text-white text-center p-2'>
+      <div className='w-95 mx-auto my-5 text-white text-center p-2'>
         <p className='mb-8'>Every digital artwork on Upside is authentic and truly unique.</p>
 
         <p className='mb-8'>Blockchain technology makes this new approach to digital ownership possible.<br/>
