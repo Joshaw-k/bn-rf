@@ -105,8 +105,8 @@ const selection = [{
 const Selection = () => {
   return (
     <div className='container p-10 mb-10 m-auto bg-[rgba(48,48,48,0.3)] border border-[rgba(48,48,48,0.9)] rounded-lg'>
-      <h3 className='text-center font-semibold text-2xl mb-10 text-[rgba(0,200,32,1)] '>Make Your Selection Below</h3>
-      <div className='container grid m-auto gap-10'>
+      <h3 className='text-center font-semibold text-2xl md:text-3xl lg:text-5xl mb-10 text-[rgba(0,200,32,1)] '>Make Your Selection Below</h3>
+      <div className='container grid sm:grid-cols-2 lg:grid-cols-3 m-auto gap-10'>
           {selection.map((item,index)=>{
             const {icon,title,text} = item;
             return <div className='text-center bg-[rgba(48,48,48,0.3)] hover:bg-[rgba(48,48,48,0.7)] border border-[rgba(48,48,48,0.7)] rounded-3xl py-10 px-5' key={index}>

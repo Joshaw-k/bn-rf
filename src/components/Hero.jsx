@@ -5,7 +5,7 @@ import {BsFillArrowDownCircleFill} from "react-icons/bs"
 const Hero = () => {
   return (
       <div className='container mx-auto p-8 mt-10 min-h-[100vh]'>
-        <div className='sm:w-full mx-auto mb-5'>
+        <div className='sm:w-full md:w-[80%] mx-auto mb-5'>
           <img src={BlocknodeRectification} alt="hero.png" className='w-full' />
         </div>
       <div className='w-95 mx-auto my-5 text-white text-center p-2'>
@@ -19,9 +19,9 @@ const Hero = () => {
 
         <p className='mb-8'>You will be on a chat with an Artificial Intelligence Robot with zero Human interference.</p>
       </div>
-      <div className='flex flex-col gap-y-3 m-auto'>
-        <button className='py-3 px-4 bg-[rgba(0,201,32,1)] rounded-full font-bold hover:text-[rgba(0,201,32,1)] hover:bg-white'>Connect Wallet</button>
-        <button className='pl-5 pr-1 py-1 bg-transparent rounded-full font-bold inline-flex justify-between text-[rgba(0,201,32,1)] ring-1 ring-inset ring-[rgba(0,201,32,1)] justify-center items-center' >Select Chain <BsFillArrowDownCircleFill className='text-4xl bg-white rounded-full'/></button>
+      <div className='flex flex-col md:flex-row gap-y-3 justify-between md:w-[50%] mx-auto'>
+        <button className='py-3 px-4 lg:px-8 md:w-[48%] bg-[rgba(0,201,32,1)] rounded-full font-bold hover:text-[rgba(0,201,32,1)] hover:bg-white'>Connect Wallet</button>
+        <button className='pl-5 pr-1 py-1 md:w-[48%] lg:gap-x-4 bg-transparent rounded-full font-bold inline-flex justify-between text-[rgba(0,201,32,1)] ring-1 ring-inset ring-[rgba(0,201,32,1)] items-center' >Select Chain <BsFillArrowDownCircleFill className='text-4xl bg-white rounded-full'/></button>
       </div>
       </div>
   )
