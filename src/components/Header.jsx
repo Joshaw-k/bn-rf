@@ -55,14 +55,14 @@ const bitPrices = [{
 const Header = () => {
     const handleSlider = ()=>{
         const copy = document.querySelector(".logos-slide").cloneNode(true);
-      document.querySelector(".logos").appendChild(copy);
+        document.querySelector(".logos").appendChild(copy);
     }
     useEffect(()=>{
     handleSlider()
     })
     
   return (
-    <div className='bg-[rgba(48,48,48,0.3)] w-full p-2.5 mt-5 border-t border-[rgb(44,44,44)] overflow-hidden logos flex gap-x-14'>
+    <div className='bg-[rgba(48,48,48,0.3)] w-full p-2.5 cursor-pointer mt-5 border-t border-[rgb(44,44,44)] overflow-hidden logos flex gap-x-14'>
         <div className='flex gap-x-14 logos-slide'>
         {bitPrices.map((item,index)=>{
             const {logo,fullName,shortName,price,percent} = item

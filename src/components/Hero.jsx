@@ -5,7 +5,7 @@ import {BsFillArrowDownCircleFill} from "react-icons/bs"
 const Hero = () => {
   return (
       <div className='container mx-auto p-8 mt-10 min-h-[100vh]'>
-        <div className='sm:w-full md:w-[80%] mx-auto mb-5'>
+        <div className='sm:w-full md:w-[70%] mx-auto mb-5'>
           <img src={BlocknodeRectification} alt="hero.png" className='w-full' />
         </div>
       <div className='w-95 mx-auto my-5 text-white text-center p-2'>

@@ -1,0 +1,7 @@
+.indicator {
+    transition: left .4s;
+}
+.tabActive{
+    background: #D1FFCE;
+transition: linear .4s;
+}
