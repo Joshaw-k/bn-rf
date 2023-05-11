@@ -5,7 +5,7 @@ import MetaMask from "../assets/MetaMask.png"
 const Initialization = () => {
   return (
     <div className='min-h-[100vh]'>
-      <div className='max-w-md mx-auto mt-10 w-[50%] bg-[#222222] px-6 pt-3 pb-10 rounded-3xl'>
+      <div className='max-w-md mx-auto mt-10 w-[90%] bg-[#222222] px-6 pt-3 pb-10 rounded-3xl'>
             <div className='flex justify-between items-center mb-8'>
                 <h5 className='text-white font-bold'>Back</h5>
                 <AiOutlineClose className='text-[#FF1E1E] text-2xl'/>
