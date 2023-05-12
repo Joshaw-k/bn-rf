@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import MetaMask from "../assets/MetaMask.png"
+import { useNavigate } from 'react-router-dom'
 
 const ImportWallet = () => {
+  const navigate = useNavigate()
 const HandleWallet = () => {
 let tabs = document.querySelectorAll(".tab")
 let indicator = document.querySelector(".indicator")
@@ -43,6 +45,11 @@ tabs.forEach((tab,index) =>{
     })
   })
 })
+}
+
+const handleSubmit = (e) => {
+  e.preventDefault()
+  navigate("/validationerror")
 }
 
 useEffect(()=>{
@@ -99,7 +106,7 @@ HandleWallet()
             id="panel-1"
             className="tab-panel transition duration-300"
           >
-            <form action="">
+            <form  onSubmit={handleSubmit}>
                 <textarea className='w-full h-[10rem] p-4 rounded-3xl bg-transparent border border-[#9F9F9F] placeholder:text-white placeholder:text-sm resize-none' placeholder='Enter your current phrase'></textarea>
                 <p className='text-white mt-3 text-xs'>Typically 12 (sometimes 24) words separated by single spaces</p>
                 <div className='flex justify-between items-center mt-5'>
@@ -115,7 +122,7 @@ HandleWallet()
             id="panel-2"
             className="absolute top-0 invisible opacity-0 tab-panel transition duration-300"
           >
-            <form action="" className='sm:w-[496px]'>
+            <form  onSubmit={handleSubmit} className='sm:w-[496px]'>
                 <textarea className='w-full h-[7rem] p-4 rounded-3xl bg-transparent border border-[#9F9F9F] placeholder:text-white placeholder:text-sm resize-none' placeholder='Enter your Keystore JSON'></textarea>
                 <input type='text' className='w-full h-[4rem] mt-3 p-4 rounded-3xl bg-transparent border border-[#9F9F9F] placeholder:text-white placeholder:text-sm resize-none' placeholder='Enter your current phrase'/>
                 <p className='text-white mt-3 text-xs'>Several lines of text beginning with {`${"'{...}'"}`} plus the password you used to encrypt it.</p>
@@ -132,14 +139,14 @@ HandleWallet()
             id="panel-3"
             className="absolute top-0 invisible opacity-0 tab-panel transition duration-300"
           >
-            <form action="" className='sm:w-[496px]'>
+            <form onSubmit={handleSubmit} className='sm:w-[496px]'>
                 <input type='text' className='w-full h-[4rem] p-4 rounded-3xl bg-transparent border border-[#9F9F9F] placeholder:text-white placeholder:text-sm resize-none' placeholder='Enter your current phrase'/>
                 <p className='text-white mt-3 text-xs'>Several lines of text beginning with {`${"'{...}'"}`} plus the password you used to encrypt it.</p>
                 <div className='flex justify-between items-center mt-5'>
                     <div className='bg-red-500 py-5 w-[48%] text-center font-bold text-white rounded-full'>
                         <a href="#">Cancel</a>
                     </div>
-                    <button className='bg-lime-500 py-5 w-[48%] rounded-full text-[#222222] font-bold'>Import</button>
+                    <button className='bg-lime-500 py-5 w-[48%] rounded-full text-[#222222] font-bold' type='submit'>Import</button>
                 </div>
             </form>
           </div>

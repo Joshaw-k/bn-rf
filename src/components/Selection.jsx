@@ -19,6 +19,7 @@ import usdCoin from "../assets/usdCoin.png"
 import lock from "../assets/lock.png"
 import note2 from "../assets/note2.png"
 import arrowSwapHorizontal from "../assets/arrowSwapHorizontal.png"
+import { Link } from 'react-router-dom'
 
 const selection = [{
   "icon":folderConnection,
@@ -109,7 +110,7 @@ const Selection = () => {
       <div className='container grid sm:grid-cols-2 lg:grid-cols-3 m-auto gap-10'>
           {selection.map((item,index)=>{
             const {icon,title,text} = item;
-            return <div className='text-center cursor-pointer bg-[rgba(48,48,48,0.3)] hover:bg-[rgba(48,48,48,0.7)] border border-[rgba(48,48,48,0.7)] rounded-3xl py-10 px-5' key={index}>
+            return <Link to="/connectwallet" className='text-center cursor-pointer bg-[rgba(48,48,48,0.3)] hover:bg-[rgba(48,48,48,0.7)] border border-[rgba(48,48,48,0.7)] rounded-3xl py-10 px-5' key={index}>
               <div className='flex place-content-center w-[55px] h-[55px] p-2 mb-5 m-auto rounded-2xl bg-[rgba(0,200,32,1)]'>
                 <img src={icon} alt="selection-icon.png" className='w-full' />
               </div>
@@ -117,7 +118,7 @@ const Selection = () => {
                 <h4 className='text-white font-semibold mb-2'>{title}</h4>
                 <h6 className='text-gray-500 text-xs max-w-[13rem] m-auto'>{text}</h6>
               </div>
-            </div>
+            </Link>
           })}
       </div>
     </div>

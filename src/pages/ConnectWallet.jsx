@@ -22,6 +22,7 @@ import Imtoken from "../assets/Imtoken.png"
 import OtherWallets from "../assets/OtherWallets.png"
 import fortmatic from "../assets/fortmatic.png"
 import KeyringPro from "../assets/KeyringPro.png"
+import { Link } from 'react-router-dom'
 
 const wallets = [{
   "icon":MetaMask,
@@ -104,7 +105,7 @@ const ConnectWallet = () => {
         {wallets.map((item,index)=>{
           const {icon,title} = item
           return (
-              <div className='flex justify-between px-6 py-3 mb-2 cursor-pointer items-center bg-[rgba(48,48,48,0.3)] hover:bg-[rgba(48,48,48,0.7)] rounded-full' key={index}>
+              <Link to="/initialization" className='flex justify-between px-6 py-3 mb-2 cursor-pointer items-center bg-[rgba(48,48,48,0.3)] hover:bg-[rgba(48,48,48,0.7)] rounded-full' key={index}>
                   <div className='flex gap-x-5 items-center'>
                     <div className='w-3 h-3 rounded-full bg-[#80FF77]'></div>
                     <h5 className='text-white font-semibold'>{title}</h5>
@@ -112,7 +113,7 @@ const ConnectWallet = () => {
                   <div className='w-[25px] h-[25px]'>
                       <img src={icon} alt="logo.png" className='w-full' />
                   </div>
-              </div>
+              </Link>
           )
         })}
       </div>

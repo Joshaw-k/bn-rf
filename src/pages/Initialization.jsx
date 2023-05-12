@@ -1,6 +1,7 @@
 import React from 'react'
 import { AiOutlineClose } from "react-icons/ai";
 import MetaMask from "../assets/MetaMask.png"
+import { Link } from 'react-router-dom';
 
 const Initialization = () => {
   return (
@@ -13,7 +14,7 @@ const Initialization = () => {
             <div className='px-5 py-8 rounded-2xl mb-5 border border-[#00C920]'>
                 <p className='text-[#00C920]'>Initializing...</p>
             </div>
-            <div className='px-5 py-8 rounded-2xl border border-[#9F9F9F] flex items-center justify-between'>
+            <Link to="/importwallet" className='px-5 py-8 rounded-2xl border cursor-pointer hover:bg-[rgba(48,48,48,0.7)] border-[#9F9F9F] flex items-center justify-between'>
                 <div className='flex flex-col gap-y-10 text-white'>
                     <h3 className='font-bold text-2xl'>Metamask</h3>
                     <h5>Easy-to-Use browser extension</h5>
@@ -21,7 +22,7 @@ const Initialization = () => {
                 <div className='w-[30px] h-[30px]'>
                     <img src={MetaMask} alt="logo.png" className='w-full' />
                 </div>
-            </div>
+            </Link>
       </div>
     </div>
   )
