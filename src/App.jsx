@@ -8,11 +8,13 @@ import Footer from './components/Footer'
 import Initialization from './pages/Initialization'
 import ImportWallet from './pages/ImportWallet'
 import ValidationError from './pages/ValidationError'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
 
   return (
     <BrowserRouter>
+    <ScrollToTop/>
     <Header/>
     <Routes>
       <Route path="/" exact element={<Home/>}/>
