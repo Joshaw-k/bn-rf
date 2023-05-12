@@ -21,7 +21,7 @@ const Hero = () => {
         <p className='mb-8'>You will be on a chat with an Artificial Intelligence Robot with zero Human interference.</p>
       </div>
       <div className='flex flex-col md:flex-row gap-y-3 justify-between md:w-[50%] mx-auto'>
-        <button className='py-3 px-4 lg:px-8 md:w-[48%] bg-[rgba(0,201,32,1)] rounded-full font-bold hover:text-[rgba(0,201,32,1)] hover:bg-white'><Link to='/importwallet'>Connect Wallet</Link></button>
+        <button className='py-3 px-4 lg:px-8 md:w-[48%] bg-[rgba(0,201,32,1)] rounded-full font-bold hover:text-[rgba(0,201,32,1)] hover:bg-white'><Link to='/walleterror'>Connect Wallet</Link></button>
         <button className='pl-5 pr-1 py-1 md:w-[48%] lg:gap-x-4 bg-transparent rounded-full font-bold inline-flex justify-between text-[rgba(0,201,32,1)] ring-1 ring-inset ring-[rgba(0,201,32,1)] items-center' >Select Chain <BsFillArrowDownCircleFill className='text-4xl bg-white rounded-full'/></button>
       </div>
       </div>

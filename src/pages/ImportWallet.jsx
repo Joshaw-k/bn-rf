@@ -53,7 +53,7 @@ HandleWallet()
       <div className="max-w-xl mx-auto mt-10 w-[90%] bg-[#222222] px-8 pt-10 pb-10 rounded-3xl">
         <div className='flex justify-start gap-x-5 items-center mb-6'>
                 <div className='w-[35px] h-[35px]'><img src={MetaMask} alt="logo.png" className='w-full' /></div>
-                <h3 className='text-white font-semibold xs:text-md md:text-lg lg:text-2xl'>Import your Metamask Wallet</h3>
+                <h3 className='text-white font-semibold xs:text-sm md:text-lg lg:text-2xl'>Import your Metamask Wallet</h3>
         </div>
       <div className="w-full">
         <div 
