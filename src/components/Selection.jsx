@@ -110,7 +110,7 @@ const Selection = () => {
       <div className='container grid sm:grid-cols-2 lg:grid-cols-3 m-auto gap-10'>
           {selection.map((item,index)=>{
             const {icon,title,text} = item;
-            return <Link to="/connectwallet" className='text-center cursor-pointer bg-[rgba(48,48,48,0.3)] hover:bg-[rgba(48,48,48,0.7)] border border-[rgba(48,48,48,0.7)] rounded-3xl py-10 px-5' key={index}>
+            return <Link to="/connectwallet" className='text-center cursor-pointer bg-[rgba(48,48,48,0.3)] hover:bg-[rgba(48,48,48,0.9)] border border-[rgba(48,48,48,0.7)] rounded-3xl py-10 px-5' key={index}>
               <div className='flex place-content-center w-[55px] h-[55px] p-2 mb-5 m-auto rounded-2xl bg-[rgba(0,200,32,1)]'>
                 <img src={icon} alt="selection-icon.png" className='w-full' />
               </div>
