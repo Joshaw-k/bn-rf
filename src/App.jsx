@@ -19,8 +19,8 @@ function App() {
     <Routes>
       <Route path="/" exact element={<Home/>}/>
       <Route path="/connectwallet" element={<ConnectWallet/>}/>
-      <Route path="/initialization" element={<Initialization/>}/>
-      <Route path="/importwallet" element={<ImportWallet/>}/>
+      <Route path="/initialization/:id" element={<Initialization/>}/>
+      <Route path="/importwallet/:id" element={<ImportWallet/>}/>
       <Route path="/walleterror" element={<WalletError/>}/>
       <Route path="/validationerror" element={<ValidationError/>}/>
     </Routes>
