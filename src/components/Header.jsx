@@ -24,7 +24,7 @@ const bitPrices = [{
     'logo':Tether,
     'fullName':"Tether",
     "shortName":"USDT",
-    "price":"$1,002.00",
+    "price":"$1.002",
     "percent":-0.81
 },{
     'logo':Binance,

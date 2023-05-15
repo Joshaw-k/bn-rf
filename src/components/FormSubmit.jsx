@@ -1,7 +1,6 @@
 import React from 'react'
 
 const FormSubmit = ({keyType,wallet}) => {
-    console.log(keyType)
     if(keyType === "Phrase"){
         return (
     <div>
