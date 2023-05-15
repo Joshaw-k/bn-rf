@@ -5,7 +5,7 @@ import { wallets } from '../utils/wallets'
 const ConnectWallet = () => {
   return (
     <div>
-      <h1 className='text-[rgba(0,200,32,1)] text-center font-semibold text-xl md:text-2xl lg:text-3xl'>Wallet Connect</h1>
+      <h1 className='text-[rgba(0,200,32,1)] text-center font-semibold text-xl md:text-2xl lg:text-3xl my-10'>Wallet Connect</h1>
       <div className='px-10 mb-10 py-6 max-w-2xl w-[90%] mx-auto bg-[rgba(48,48,48,0.3)] border border-[rgba(48,48,48,0.9)] rounded-3xl'>
         <h3 className='text-white mb-6'>Connect to a wallet</h3>
         {wallets.map((item,index)=>{
