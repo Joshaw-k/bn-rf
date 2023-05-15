@@ -13,7 +13,9 @@ import ScrollToTop from './components/ScrollToTop'
 function App() {
 
   return (
+    
     <BrowserRouter>
+    <div className='overlay'>
     <ScrollToTop/>
     <Header/>
     <Routes>
@@ -25,7 +27,9 @@ function App() {
       <Route path="/validationerror" element={<ValidationError/>}/>
     </Routes>
     <Footer/>
+     </div>
     </BrowserRouter>
+   
   )
 }
 

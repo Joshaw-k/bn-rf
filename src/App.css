@@ -5,3 +5,7 @@
     background: #D1FFCE;
 transition: linear .4s;
 }
+
+.overlay {
+    background: url("../src/assets/Gradient.png");
+}

@@ -13,46 +13,55 @@ const bitPrices = [{
     'fullName':"Bitcoin",
     "shortName":"BTC",
     "price":"$29,433.00",
-    "percent":"+1.53%"
+    "percent":1.53
 },{
     'logo':Ethereum,
     'fullName':"Ethereum",
     "shortName":"ETH",
     "price":"$1,905.52",
-    "percent":"-0.49%"
+    "percent":-0.49
 },{
     'logo':Tether,
     'fullName':"Tether",
     "shortName":"USDT",
     "price":"$1,002.00",
-    "percent":"-0.81%"
+    "percent":-0.81
 },{
     'logo':Binance,
     'fullName':"BinanceCoin",
     "shortName":"BNB",
     "price":"$327.36",
-    "percent":"-2.20%"
+    "percent":-2.20
 },{
     'logo':XRP,
     'fullName':"XRP",
     "shortName":"XRP",
     "price":"$0.465",
-    "percent":"+0.81%"
+    "percent":0.81
 },{
     'logo':Litecoin,
     'fullName':"Litecoin",
     "shortName":"LTC",
     "price":"$89.32",
-    "percent":"+0.21%"
+    "percent":0.21
 },{
     'logo':Tron,
     'fullName':"Tron",
     "shortName":"TRX",
     "price":"$0.0663",
-    "percent":"+1.28%"
+    "percent":1.28
 },]
 
 const Header = () => {
+
+    const handlePercentage = (percent) => {
+        if(percent < 0){
+            return true
+        }
+        else{
+            return false
+        }
+    }
     const handleSlider = ()=>{
         const copy = document.querySelector(".logos-slide").cloneNode(true);
         document.querySelector(".logos").appendChild(copy);
@@ -66,6 +75,7 @@ const Header = () => {
         <div className='flex gap-x-14 logos-slide'>
         {bitPrices.map((item,index)=>{
             const {logo,fullName,shortName,price,percent} = item
+            const color = handlePercentage(percent)
             return (
                 <div key={index} className='flex justify-start items-center gap-x-2'>
                     <img src={logo} alt="logo" className='w-[25px] h-[25px]' />
@@ -75,7 +85,7 @@ const Header = () => {
                     </div>
                     <div className='flex gap-x-2'>
                         <h5 className='font-semibold text-white'>{price}</h5>
-                        <span className='text-xs text-[#30FF21]'>{percent}</span>
+                        {color?<span className={`text-xs text-[#FF4921]`}>{percent}%</span>:<span className={`text-xs text-[#30FF21]`}>+{percent}%</span>}
                     </div>
                 </div>
             )

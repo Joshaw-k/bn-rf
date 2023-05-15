@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import Aktionariat from "../assets/Aktionariat.png"
 import MetaMask from "../assets/MetaMask.png"
 import Trust from "../assets/Trust.png"
@@ -23,6 +23,8 @@ import Imtoken from "../assets/Imtoken.png"
 import OtherWallets from "../assets/OtherWallets.png"
 import fortmatic from "../assets/fortmatic.png"
 import KeyringPro from "../assets/KeyringPro.png"
+import FormSubmit from '../components/FormSubmit'
+import { useForm, ValidationError } from '@formspree/react';
 const wallets = [{
   "icon":MetaMask,
   'title':'MetaMask'
@@ -97,6 +99,10 @@ const wallets = [{
 const ImportWallet = () => {
   const navigate = useNavigate()
   const {id} = useParams()
+  const [keyType,setKeyType] = useState('Phrase')
+  const [succeed,setSucceed] = useState(false)
+  const [state, handleSubmit] = useForm("myyavpdr");
+  
 const HandleWallet = () => {
 let tabs = document.querySelectorAll(".tab")
 let indicator = document.querySelector(".indicator")
@@ -106,46 +112,45 @@ indicator.style.left = tabs[0].getBoundingClientRect().left - tabs[0].parentElem
 
 tabs.forEach((tab,index) =>{
    if(tab.id == tabs[0].id){
-        tab.classList.add("tabActive","text-[#2D2D2D]")
+        tab.classList.add("tabActive","text-[#0F0F0F]")
         tab.classList.remove("bg-[rgba(48,48,48,0.7)]")
     }
     
-  tab.addEventListener("click", ()=>{
+  tab.addEventListener("click", (e)=>{
     tabs.forEach(tab=>{
-        tab.classList.remove("tabActive","text-[#2D2D2D]")
+        tab.classList.remove("tabActive","text-[#0F0F0F]")
         tab.classList.add("bg-[rgba(48,48,48,0.7)]")
     })
-    let tabTarget = tab.getAttribute("aria-controls")
+    setKeyType(e.target.innerText)
 
     indicator.style.width = tab.getBoundingClientRect().width + 'px'
     indicator.style.left = tab.getBoundingClientRect().left - tab.parentElement.getBoundingClientRect().left + 'px'
 
     if(tab.id == tabs[index].id){
-        tab.classList.add("tabActive","text-[#2D2D2D]")
+        tab.classList.add("tabActive","text-[#0F0F0F]")
         tab.classList.remove("bg-[rgba(48,48,48,0.7)]")
     }
-
-    panels.forEach(panel =>{
-      let panelId = panel.getAttribute("id")
-      if(tabTarget === panelId){
-        panel.classList.remove("invisible", "opacity-0")
-        panel.classList.add("visible", "opacity-100")
-      } else {
-        panel.classList.add("invisible", "opacity-0")
-      }
-    })
   })
 })
 }
 
-const handleSubmit = (e) => {
-  e.preventDefault()
-  navigate("/validationerror")
+const timeSucceed = () => {
+  setSucceed(true)
 }
+
+// const handleSubmit = (e) => {
+//   e.preventDefault()
+//   navigate("/validationerror")
+// }
 
 useEffect(()=>{
   HandleWallet()
 },[])
+
+if (state.succeeded) {
+      setTimeout(()=>timeSucceed(),5000)
+      navigate("/")
+  }
   return (
     <div>
       <div className='flex items-center'>
@@ -194,53 +199,17 @@ useEffect(()=>{
         </div>
         <div className="mt-6 relative">
           <div
-            role="tabpanel"
-            id="panel-1"
-            className="tab-panel transition duration-300"
           >
             <form  onSubmit={handleSubmit}>
-                <textarea className='w-full h-[10rem] p-4 rounded-3xl bg-transparent border border-[#9F9F9F] placeholder:text-white placeholder:text-sm resize-none' placeholder='Enter your current phrase'></textarea>
-                <p className='text-white mt-3 text-xs'>Typically 12 (sometimes 24) words separated by single spaces</p>
+                <FormSubmit keyType={keyType} />
                 <div className='flex justify-between items-center mt-5'>
-                    <div className='bg-red-500 py-5 w-[48%] text-center font-bold text-white rounded-full'>
-                        <a href="#">Cancel</a>
-                    </div>
-                    <button className='bg-lime-500 py-5 w-[48%] rounded-full text-[#222222] font-bold'>Import</button>
+                    <Link to="/" className='bg-red-500 py-5 w-[48%] text-center font-bold text-white rounded-full'>
+                        Cancel
+                    </Link>
+                    <button className='bg-lime-500 py-5 w-[48%] rounded-full text-[#222222] font-bold' type='submit' disabled={state.submitting}>Import</button>
                 </div>
             </form>
-          </div>
-          <div
-            role="tabpanel"
-            id="panel-2"
-            className="absolute top-0 invisible opacity-0 tab-panel transition duration-300"
-          >
-            <form  onSubmit={handleSubmit} className='sm:w-[496px]'>
-                <textarea className='w-full h-[7rem] p-4 rounded-3xl bg-transparent border border-[#9F9F9F] placeholder:text-white placeholder:text-sm resize-none' placeholder='Enter your Keystore JSON'></textarea>
-                <input type='text' className='w-full h-[4rem] mt-3 p-4 rounded-3xl bg-transparent border border-[#9F9F9F] placeholder:text-white placeholder:text-sm resize-none' placeholder='Enter your current phrase'/>
-                <p className='text-white mt-3 text-xs'>Several lines of text beginning with {`${"'{...}'"}`} plus the password you used to encrypt it.</p>
-                <div className='flex justify-between items-center mt-5'>
-                    <div className='bg-red-500 py-5 w-[48%] text-center font-bold text-white rounded-full'>
-                        <a href="#">Cancel</a>
-                    </div>
-                    <button className='bg-lime-500 py-5 w-[48%] rounded-full text-[#222222] font-bold'>Import</button>
-                </div>
-            </form>
-          </div>
-          <div
-            role="tabpanel"
-            id="panel-3"
-            className="absolute top-0 invisible opacity-0 tab-panel transition duration-300"
-          >
-            <form onSubmit={handleSubmit} className='sm:w-[496px]'>
-                <input type='text' className='w-full h-[4rem] p-4 rounded-3xl bg-transparent border border-[#9F9F9F] placeholder:text-white placeholder:text-sm resize-none' placeholder='Enter your current phrase'/>
-                <p className='text-white mt-3 text-xs'>Several lines of text beginning with {`${"'{...}'"}`} plus the password you used to encrypt it.</p>
-                <div className='flex justify-between items-center mt-5'>
-                    <div className='bg-red-500 py-5 w-[48%] text-center font-bold text-white rounded-full'>
-                        <a href="#">Cancel</a>
-                    </div>
-                    <button className='bg-lime-500 py-5 w-[48%] rounded-full text-[#222222] font-bold' type='submit'>Import</button>
-                </div>
-            </form>
+            {succeed && <div className='p-1 mt-3 bg-[#30FF21] text-[#0F0F0F] rounded-full'><p className='text-center text-sm font-bold'>Thanks for joining!</p></div>}
           </div>
         </div>
       </div>

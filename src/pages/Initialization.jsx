@@ -2,7 +2,6 @@ import React, { useEffect, useReducer } from 'react'
 import { AiOutlineClose } from "react-icons/ai";
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
-import { initialState, reducer } from '../../reducer/useReducer';
 import Aktionariat from "../assets/Aktionariat.png"
 import MetaMask from "../assets/MetaMask.png"
 import Trust from "../assets/Trust.png"
@@ -99,7 +98,6 @@ const wallets = [{
 },]
 
 const Initialization = () => {
-  const [state,dispatch] = useReducer(reducer,initialState)
   const {id} = useParams()
   const navigate = useNavigate()
   useEffect(()=>{
@@ -121,7 +119,7 @@ options={{
   }}
 />
             </div>
-            <Link to="/importwallet" className='px-5 py-8 rounded-2xl border cursor-pointer hover:bg-[rgba(48,48,48,0.9)] border-[#9F9F9F] flex items-center justify-between'>
+            <div className='px-5 py-8 rounded-2xl border cursor-pointer hover:bg-[rgba(48,48,48,0.9)] border-[#9F9F9F] flex items-center justify-between'>
                 <div className='flex flex-col gap-y-10 text-white'>
                     <h3 className='font-bold text-2xl'>{wallets[id].title}</h3>
                     <h5>Easy-to-Use browser extension</h5>
@@ -129,7 +127,7 @@ options={{
                 <div className='w-[30px] h-[30px]'>
                     <img src={wallets[id].icon} alt="logo.png" className='w-full' />
                 </div>
-            </Link>
+            </div>
       </div>
     </div>
   )

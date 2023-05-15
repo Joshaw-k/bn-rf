@@ -26,7 +26,6 @@ import Imtoken from "../assets/Imtoken.png"
 import OtherWallets from "../assets/OtherWallets.png"
 import fortmatic from "../assets/fortmatic.png"
 import KeyringPro from "../assets/KeyringPro.png"
-import { initialState, reducer } from '../../reducer/useReducer';
 
 const wallets = [{
   "icon":MetaMask,
@@ -103,16 +102,15 @@ const wallets = [{
 const Hero = () => {
   const [dropDown,setDropDown] = useState(false)
 
-  const [state,dispatch] = useReducer(reducer,initialState)
-
-  const connectWallet = (icon,title) => {
-    dispatch({action:"CONNECT_WALLET",payload:{icon,title}})
-    console.log(state)
+  const handleDropDown = (e) => {
+    if(!e.target.classList.contains("chain")){
+      setDropDown(false)
+    }
   }
 
   return (
-      <div className='container mx-auto p-8 mt-10 min-h-[100vh]'>
-        <div className='sm:w-full md:w-[70%] mx-auto mb-5'>
+      <div className='container mx-auto p-8 mt-10 min-h-[100vh]' onClick={handleDropDown}>
+        <div className='sm:w-full md:w-[70%] mx-auto mb-10'>
           <img src={BlocknodeRectification} alt="hero.png" className='w-full' />
         </div>
       <div className='w-95 mx-auto my-5 text-white text-center p-2'>
@@ -129,12 +127,12 @@ const Hero = () => {
       <div className='flex flex-col md:flex-row gap-y-3 justify-between md:w-[50%] mx-auto'>
         <Link to="/connectwallet" className='py-3 px-4 lg:px-8 md:w-[48%] bg-[rgba(0,201,32,1)] rounded-full font-bold hover:text-[rgba(0,201,32,1)] hover:bg-white text-center'>Connect Wallet</Link>
         <div className='md:w-[48%] relative'>
-          <button className='pl-5 pr-1 py-1 w-full  lg:gap-x-4 bg-transparent rounded-full font-bold inline-flex justify-between text-[rgba(0,201,32,1)] ring-1 ring-inset ring-[rgba(0,201,32,1)] items-center' onClick={()=>setDropDown(!dropDown)} >Select Chain {dropDown?<RiArrowUpSLine className='text-4xl bg-[rgba(0,201,32,1)] text-white rounded-full'/>:<RiArrowDownSLine className='text-4xl bg-[rgba(0,201,32,1)] text-white rounded-full'/>}</button>
-          {dropDown && <div className='bg-[#0F0F0F] border border-[rgba(48,48,48,0.9)] rounded-xl h-56 overflow-hidden overflow-y-auto absolute top-14 left-0 right-0 scrollbar scrollbar-thin scrollbar-thumb-[rgba(0,201,32,1)]'>
+          <button className='pl-5 pr-1 py-1 w-full chain lg:gap-x-4 bg-transparent rounded-full font-bold inline-flex justify-between text-[rgba(0,201,32,1)] ring-1 ring-inset ring-[rgba(0,201,32,1)] items-center' onClick={()=>setDropDown(!dropDown)} >Select Chain {dropDown?<RiArrowUpSLine className='text-4xl bg-[rgba(0,201,32,1)] text-white rounded-full'/>:<RiArrowDownSLine className='text-4xl chain bg-[rgba(0,201,32,1)] text-white rounded-full'/>}</button>
+          {dropDown && <div className='bg-[#0F0F0F] border border-[rgba(48,48,48,0.9)] rounded-xl h-56 overflow-hidden overflow-y-auto absolute top-14 left-0 right-0 scrollbar scrollbar-thin scrollbar-thumb-[rgba(0,201,32,1)] z-30'>
               {wallets.map((item,index)=>{
                 const {icon,title} = item
               return (
-                <Link to={`/initialization/${index}`} className='flex justify-between px-6 py-3 mb-2 cursor-pointer items-center hover:bg-[rgba(48,48,48,0.9)]' key={index} onClick={()=>connectWallet(icon,title)}>
+                <Link to={`/initialization/${index}`} className='flex justify-between px-6 py-3 mb-2 cursor-pointer items-center hover:bg-[rgba(48,48,48,0.9)]' key={index}>
                   <h5 className='text-white font-semibold'>{title}</h5>
                   <div className='w-[25px] h-[25px]'>
                       <img src={icon} alt="logo.png" className='w-full' />
