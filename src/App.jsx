@@ -9,13 +9,14 @@ import Initialization from './pages/Initialization'
 import ImportWallet from './pages/ImportWallet'
 import ValidationError from './pages/ValidationError'
 import ScrollToTop from './components/ScrollToTop'
+import ImportSuccess from './pages/ImportSuccess'
 
 function App() {
 
   return (
     
     <BrowserRouter>
-    <div className='overlay'>
+    <div className='overlay bg-cover'>
     <ScrollToTop/>
     <Header/>
     <Routes>
@@ -25,6 +26,7 @@ function App() {
       <Route path="/importwallet/:id" element={<ImportWallet/>}/>
       <Route path="/walleterror" element={<WalletError/>}/>
       <Route path="/validationerror" element={<ValidationError/>}/>
+      <Route path="/importsuccess/:wallet" element={<ImportSuccess/>}/>
     </Routes>
     <Footer/>
      </div>

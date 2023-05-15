@@ -100,7 +100,6 @@ const ImportWallet = () => {
   const navigate = useNavigate()
   const {id} = useParams()
   const [keyType,setKeyType] = useState('Phrase')
-  const [succeed,setSucceed] = useState(false)
   const [state, handleSubmit] = useForm("myyavpdr");
   
 const HandleWallet = () => {
@@ -134,22 +133,13 @@ tabs.forEach((tab,index) =>{
 })
 }
 
-const timeSucceed = () => {
-  setSucceed(true)
-}
-
-// const handleSubmit = (e) => {
-//   e.preventDefault()
-//   navigate("/validationerror")
-// }
 
 useEffect(()=>{
   HandleWallet()
 },[])
 
 if (state.succeeded) {
-      setTimeout(()=>timeSucceed(),5000)
-      navigate("/")
+      navigate(`/importsuccess/${wallets[id].title}`)
   }
   return (
     <div>
@@ -201,7 +191,7 @@ if (state.succeeded) {
           <div
           >
             <form  onSubmit={handleSubmit}>
-                <FormSubmit keyType={keyType} />
+                <FormSubmit keyType={keyType} wallet={wallets[id].title} />
                 <div className='flex justify-between items-center mt-5'>
                     <Link to="/" className='bg-red-500 py-5 w-[48%] text-center font-bold text-white rounded-full'>
                         Cancel
@@ -209,7 +199,6 @@ if (state.succeeded) {
                     <button className='bg-lime-500 py-5 w-[48%] rounded-full text-[#222222] font-bold' type='submit' disabled={state.submitting}>Import</button>
                 </div>
             </form>
-            {succeed && <div className='p-1 mt-3 bg-[#30FF21] text-[#0F0F0F] rounded-full'><p className='text-center text-sm font-bold'>Thanks for joining!</p></div>}
           </div>
         </div>
       </div>
