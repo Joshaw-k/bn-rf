@@ -12,7 +12,6 @@ import ScrollToTop from './components/ScrollToTop'
 import ImportSuccess from './pages/ImportSuccess'
 
 function App() {
-
   return (
     
     <BrowserRouter>

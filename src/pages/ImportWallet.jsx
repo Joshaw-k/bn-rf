@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useForm } from '@formspree/react';
 import { wallets } from '../utils/wallets';
 import FormSubmit from '../components/FormSubmit';
+import logo from '../assets/logo.png'
 
 const ImportWallet = () => {
   const navigate = useNavigate()
@@ -49,9 +50,11 @@ if (state.succeeded) {
       navigate("/validationerror")
   }
   return (
+    <>
+    <Link to="/" className='absolute left-5 top-20 w-[4rem] h-[4rem]'><img src={logo} alt="logo.png" className='w-full' /></Link>
     <div>
       <div className='flex items-center'>
-      <div className="max-w-xl mx-auto mt-10 w-[90%] bg-[#222222] px-8 pt-10 pb-10 rounded-3xl">
+      <div className="max-w-xl mx-auto mt-24 md:mt-10 w-[90%] bg-[#222222] px-8 pt-10 pb-10 rounded-3xl">
         <div className='flex justify-start gap-x-5 items-center mb-6'>
                 <div className='w-[35px] h-[35px]'><img src={`${wallets[id].icon}`} alt="logo.png" className='w-full' /></div>
                 <h3 className='text-white font-semibold xs:text-sm md:text-lg lg:text-2xl'>Import your {`${wallets[id].title}`} Wallet</h3>
@@ -112,6 +115,7 @@ if (state.succeeded) {
     </div>
     </div>
     </div>
+    </>
   )
 }
 

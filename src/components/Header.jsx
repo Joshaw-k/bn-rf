@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import { bitPrices } from '../utils/bitPrices'
-import logo from '../assets/logo.png'
-import { Link } from 'react-router-dom'
 
 const Header = () => {
 
@@ -44,7 +42,6 @@ const Header = () => {
         })}
         </div>
     </div>
-    <Link to="/" className='absolute left-5 top-20 w-[4rem] h-[4rem]'><img src={logo} alt="logo.png" className='w-full' /></Link>
     </>
   )
 }
